@@ -11,7 +11,7 @@ int main() {
         // them phan du vao trong vector
         A.push_back(n % 2);
         n = n / 2; 
-        i++; 
+        i++;
     } 
     // in vector nguoc
     for (int j = i - 1; j >= 0; j--) {
