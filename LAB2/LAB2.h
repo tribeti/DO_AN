@@ -3,14 +3,20 @@
 
 using namespace std;
 
+// Ham kiem tra so nguyen to true/false
 bool SoNguyenTo(int n){
-	for(int i = 2; i < n ; i++){
-		if(n%i == 0){
-			return 0;
-		}
-	}
-	return 1;
+	if(n == 1 || n == 2 || n == 3){		// Neu n = 1,2,3 tra ve true, ket thuc;
+		return 1;
+	}else{
+		for(int i = 2; i < n ; i++){	// So nguyen to laf so chia het cho 1 va chinh no => xet tu 2 -> n-1
+			if(n%i == 0){   	// Neu n chia du cho 1 so bat ky => sai , tra ve 0 , break;
+				return 0;
+			}
+		}	
+	}			// Nguoc lai neu n ko chia het cho 1 so trong khoang 2 -> n-1 
+	return 1;			// tra ve true, ket thuc;
 }
+
 bool SoAmstrong(int n){
 	int tam = n;
 	int tongLapPhuong = 0;
