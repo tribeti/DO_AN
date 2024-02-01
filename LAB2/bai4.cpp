@@ -6,7 +6,7 @@ using namespace std;
 
 vector <int> A;
 int main(int argc, char const *argv[]) {
-    int a, b = 0, c;
+    int a, b = 0, c, temp = 0;
     int i = 0;
     cin >> a;
     //153
@@ -15,11 +15,13 @@ int main(int argc, char const *argv[]) {
         // them hang don vi vao vector -> 3
         A.push_back(a % 10);
         // chia cho 10 (153->15)
+        temp++;
         a = a / 10;
     }
+    // cout << temp << endl;
     for (int i = 0; i < A.size(); i++) {
         // A[0] = 3   pow(3,3) = 27 
-        b = b + pow(A[i],3);
+        b = b + pow(A[i],temp);
     }    
     // xet dieu kien de kiem tra
     if (b == c) {
