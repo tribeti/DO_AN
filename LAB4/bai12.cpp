@@ -3,6 +3,7 @@
 using namespace std;
 
 int foo (char *n) {
+    // \0 là kí tự kết thúc chuỗi
     if (*n == '\0') {
         return 0;
     }

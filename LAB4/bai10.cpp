@@ -5,7 +5,7 @@ int gcd(int a, int b) {
     if (b == 0) {
         return a; // Trường hợp cơ sở: nếu b = 0, GCD(a, 0) = a
     }
-    // Sử dụng tính chất: GCD(a, b) = GCD(b, a % b)
+    //thuật toán Euclid
     return gcd(b, a % b);
 }
 

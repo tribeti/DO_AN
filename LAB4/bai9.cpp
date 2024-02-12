@@ -7,6 +7,7 @@ int logarit(int n) {
         return 0;
     }
     else {
+        // tăng số mũ rồi thực hiện đệ quy chia 2
         return 1 + logarit(n / 2);
     }
 }

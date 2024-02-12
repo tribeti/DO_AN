@@ -3,6 +3,7 @@
 using namespace std;
 
 int foo(int n) {
+    // bé hơn 10 để trả về giá trị. Nếu lớn hơn hoặc bằng 10 thì chia 10
     if (n < 10) {
         return n;
     }
