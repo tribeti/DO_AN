@@ -2,6 +2,7 @@
 
 using namespace std;
 
+// công thức có sẵn đề cho
 int foo (int n , int k) {
     if (k == 0 || n == k) {
         return 1;
