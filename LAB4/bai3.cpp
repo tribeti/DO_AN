@@ -41,6 +41,6 @@ int main() {
     int n;
     std::cout << "Enter the number of disks: ";
     std::cin >> n;
-    moveTower(n, 'A', 'C', 'B');
+    moveTower(n, 'A', 'B', 'C');
     return 0;
 }
