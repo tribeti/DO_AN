@@ -4,21 +4,25 @@ using namespace std;
 
 // in thứ tự từ số âm đến số 0 đến số dương
 void Print_Negative_0_Positive(int A[], int n) {
-    cout << "Print Am -> 0 ->  Duong: ";
+    int B[n];
     for (int i = 0; i < 10; i++) {
         if (A[i] < 0) {
-            cout << A[i] << " ";
+            B[i] = A[i];
         }
     }
     for (int i = 0; i < 10; i++) {
         if (A[i] == 0) {
-            cout << A[i] << " ";
+            B[i] = A[i];
         }
     }
     for (int i = 0; i < 10; i++) {
         if (A[i] > 0) {
-            cout << A[i] << " ";
+            B[i] = A[i];
         }
+    }
+    cout << "Print Am -> 0 ->  Duong: ";
+    for (size_t i = 0; i < n; i++) {
+        cout << B[i] << " ";
     }
 }
 
