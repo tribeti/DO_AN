@@ -27,8 +27,6 @@ void print_partitions(int index, int value, int prev) {
 int main() {
     cout << "Nhap n (n <= 30): ";
     cin >> n;
-
     print_partitions(0, n, 1);
-
     return 0;
 }
