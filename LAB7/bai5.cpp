@@ -1,10 +1,10 @@
 #include <iostream>
 using namespace std;
 
-const int N = 8; // Kích thước bàn cờ cố định 8x8
-
-bool isSafe(int queens[], int row, int col, int numQueens) {
-    for (int prevRow = 0; prevRow < row; ++prevRow) {
+const int MAX_N = 12;
+// abs là trị tuyệt đối |-1| = 1
+bool isSafe(int queens[], int row, int col, int n, int numQueens) {
+    for (int prevRow = 0; prevRow < row; prevRow++) {
         int prevCol = queens[prevRow];
         if (prevCol == col || abs(prevRow - row) == abs(prevCol - col)) {
             return false;
@@ -13,53 +13,54 @@ bool isSafe(int queens[], int row, int col, int numQueens) {
     return true;
 }
 
-void printBoard(int queens[], int numQueens) {
-    for (int i = 0; i < N; ++i) {
-        for (int j = 0; j < N; ++j) {
-            bool isQueen = false;
-            for (int q = 0; q < numQueens; ++q) {
-                if (queens[q] == j && i == q) {
-                    isQueen = true;
-                    break;
-                }
-            }
-            if (isQueen) {
-                cout << "Q ";
-            } else {
-                cout << ". ";
-            }
-        }
-        cout << endl;
+void printQueensPositions(int queens[], int numQueens, int n) {
+    for (int i = 0; i < numQueens; i++) {
+        cout << "(" << i + 1 << ", " << queens[i] + 1 << ") ";
     }
     cout << endl;
 }
 
-void solveNQueens(int queens[], int &count, int row = 0, int numQueens = 0) {
-    if (numQueens == N) {
+void solveNQueens(int queens[], int &count, int row, int numQueens, int n) {
+    if (numQueens == n) {
         ++count;
-        cout << "Solution " << count << ":\n";
-        printBoard(queens, numQueens);
+        cout << "Solution " << count << ": ";
+        printQueensPositions(queens, numQueens, n);
         return;
     }
 
-    for (int col = 0; col < N; ++col) {
-        if (isSafe(queens, row, col, numQueens)) {
+    for (int col = 0; col < n; col++) {
+        if (isSafe(queens, row, col, n, numQueens)) {
             queens[numQueens] = col;
-            solveNQueens(queens, count, row + 1, numQueens + 1);
+            solveNQueens(queens, count, row + 1, numQueens + 1, n);
         }
     }
 }
 
 int main() {
-    int numQueens;
+    int n;
     do {
         cout << "Enter the number of queens (up to 12): ";
-        cin >> numQueens;
-    } while (numQueens < 1 || numQueens > 12);
+        cin >> n;
+    } while (n < 1 || n > MAX_N);
 
-    int queens[N]; // Khai báo mảng để lưu trữ vị trí của các quân hậu
+    int queens[MAX_N]; // Khai báo mảng để lưu trữ vị trí của các quân hậu
     int count = 0;
-    solveNQueens(queens, count);
+    solveNQueens(queens, count, 0, 0, n);
     cout << "Number of solutions: " << count << endl;
     return 0;
 }
+
+/* cách code chạy :
+    solveNQueens(queens , 0 , 0 , 0 , 4);
+
+    -> check hàm safe (queens , 0 , 0 , 4 , 0) (1)
+                safe (queens , 0 , 1 , 4 , 0) 
+                safe (queens , 0 , 2 , 4 , 0) 
+                safe (queens , 0 , 3 , 4 , 0) 
+
+        (1) return true -> queen[0] = 0 và gọi solve(queens , 0 , 1 , 1 , 4) (2)
+
+        (2) return true -> q[1] = 2 và gọi solve(q , 0 , 2 , 2 , 4)
+
+    đã hiểu nhưng vì rối và dài dòng quá nên không giải nữa . Xin cảm ơn :)
+*/
