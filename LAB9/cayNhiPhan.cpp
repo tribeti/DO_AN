@@ -16,12 +16,12 @@ void khoiTaoCay() {
 	root = NULL;
 }
 
-void themNodeVaoCay(Node*& root, int x) {            // vd ta có mảng [10 , 5 , 15 , 3 , 7]             
+void themNodeVaoCay(Node* &root, int x) {            // vd ta có mảng [10 , 5 , 15 , 3 , 7]             
 	if (root == NULL) {                              // root = 10 sau đó tạo 2 Node mới trái phải rỗng
 		Node* p = new Node;							// quy tắc thêm của cây nhị phân :
 		p->data = x;								// nhỏ sang trái , lớn sang phải
 		p->left = NULL;                              // 5 < 10 -> 
-		p->right = NULL;							     //     10
+		p->right = NULL;							 //     10
 		root = p;									 //    /
 	}												 //   5
 	else {											// tương tự ta được
@@ -36,25 +36,25 @@ void themNodeVaoCay(Node*& root, int x) {            // vd ta có mảng [10 , 5
 
 void duyetTruocNLR(Node* root) {
 	if (root != NULL) {
-		std::cout << root->data;
+		cout << root->data << " ";
 		duyetTruocNLR(root->left);
 		duyetTruocNLR(root->right);
 	}
 }
 
 void duyetGiuaLNR(Node* root) {
-	if (root != NULL) {
-		duyetGiuaLNR(root->left);
-		std::cout << root->data;
-		duyetGiuaLNR(root->right);
-	}
+    if (root != NULL) {
+        duyetGiuaLNR(root->left);
+        cout << root->data << " ";
+        duyetGiuaLNR(root->right);
+    }
 }
 
 void duyetSauLRN(Node* root) {
 	if (root != NULL) {
 		duyetSauLRN(root->left);
 		duyetSauLRN(root->right);
-		std::cout << root->data;
+		cout << root->data << " ";
 	}
 }
 
@@ -98,7 +98,6 @@ int timKiem(Node* root, int t) {
 	}
 	return 0;
 }
-
 
 // bài 4 
 int countLeaves(Node* root) {
@@ -156,16 +155,17 @@ int height(Node* root) {
 */
 
 int main() {
-	int a[] = {10 , 5 , 15 , 3 , 7};
-	int n = sizeof(a) / sizeof(a[0]);
-	khoiTaoCay();
-	for (int i = 0; i < n; i++) {
-		themNodeVaoCay(root, a[i]);
-	}
+    int a[] = {10, 5, 15, 3, 7};
+    int n = sizeof(a) / sizeof(a[0]);
+    khoiTaoCay();
+    for (int i = 0; i < n; i++) {
+        cout << "Adding " << a[i] << " to the tree." << endl;
+        themNodeVaoCay(root, a[i]);
+    }
 
-
-
-
+    cout << "Duyet giua LNR: ";
+    duyetGiuaLNR(root);
+    cout << endl;
 
 	// bài 4
 	std::cout << "So la cua cay nhi phan la : " << countLeaves(root) << endl;
